@@ -1,0 +1,17 @@
+version: '2'
+
+networks:
+    default:
+        external:
+            name: yesfile
+
+services:
+    testdb.common:
+      image: registry.bankmedia.co.kr/system/mysql:5.0
+      environment:
+        - MYSQL_DATABASE=webhard
+        - MYSQL_USER=webhard
+        - MYSQL_PASSWORD=webhard
+        - MYSQL_ROOT_PASSWORD=rootpassword!@#$$
+      volumes:
+        - $PWD/initdb:/docker-entrypoint-initdb.d

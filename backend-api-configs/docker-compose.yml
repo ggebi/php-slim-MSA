@@ -1,0 +1,24 @@
+version: '2'
+
+networks:
+    default:
+        external:
+            name: yesfile
+
+services:
+    api.backend-api-configs:
+      image: backend-api-configs:latest
+      ports:
+        - "8087:80"
+      environment:
+        - ENVIRONMENT=yesfile-develop
+        - LOGS_ENV_SCHEME=tcp
+        - LOGS_ENV_HOST=redis.backend-api-logs
+        - LOGS_ENV_PORT=6379
+        - LOGS_ENV_TYPE=Configs
+        - LOGS_ENV_REDIS_KEY=backend-api-logs
+        - LOGS_ENV_CHANNEL=configs
+      volumes:
+        - $PWD/src:/var/www/src
+        - $PWD/third-party:/var/www/third-party
+        - $PWD/../secrets:/run/secrets

@@ -1,0 +1,54 @@
+image: docker:latest
+
+variables:
+  RANCHER_ENVIRONMENT: $CI_JOB_NAME
+  IMAGE_STAGE_WEB: $REGISTRY_HOST/$CI_PROJECT_PATH:$CI_COMMIT_SHA
+  IMAGE_PRODUCT_WEB: $REGISTRY_HOST/$CI_PROJECT_PATH:$CI_COMMIT_TAG
+
+stages:
+  - build
+  - release
+  - deploy-staging
+  - deploy-product
+
+before_script:
+  - docker login -u $REGISTRY_ID -p $REGISTRY_PASS $REGISTRY_HOST
+
+build:
+  stage: build
+  script:
+    - docker build -t $IMAGE_STAGE_WEB .
+    - docker push $IMAGE_STAGE_WEB
+  only:
+    - develop
+    - master
+
+release:
+  stage: release
+  script:
+    - docker pull $IMAGE_STAGE_WEB
+    - docker tag $IMAGE_STAGE_WEB $IMAGE_PRODUCT_WEB
+    - docker push $IMAGE_PRODUCT_WEB
+  only:
+    - tags
+
+yesfile-staging:
+  image: registry.bankmedia.co.kr/yesfile/rancher-cli:v0.6.8
+  stage: deploy-staging
+  only:
+    - develop
+  before_script:
+    - export CI_COMMIT_TAG=${CI_COMMIT_TAG:-$CI_COMMIT_SHA}
+  script:
+    - rancher up -d --upgrade --confirm-upgrade --interval 5000 --file ${CI_PROJECT_DIR}/deploy/docker-compose-staging.yml --rancher-file ${CI_PROJECT_DIR}/deploy/rancher-compose-staging.yml --stack ${CI_PROJECT_NAME}
+
+yesfile-product:
+  image: registry.bankmedia.co.kr/yesfile/rancher-cli:v0.6.8
+  stage: deploy-product
+  when: manual
+  only:
+    - tags
+  before_script:
+    - export CI_COMMIT_TAG=${CI_COMMIT_TAG:-$CI_COMMIT_SHA}
+  script:
+    - rancher up -d --upgrade --interval 5000 --file ${CI_PROJECT_DIR}/deploy/docker-compose-product.yml --rancher-file ${CI_PROJECT_DIR}/deploy/rancher-compose-product.yml --stack ${CI_PROJECT_NAME}

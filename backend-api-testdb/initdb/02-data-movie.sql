@@ -1,0 +1,16 @@
+/*
+SQLyog Community v12.5.0 (32 bit)
+MySQL - 5.0.33-log 
+*********************************************************************
+*/
+/*!40101 SET NAMES utf8 */;
+
+use `webhard`;
+
+insert into `movie` (`idx`, `status`, `cate1`, `cate2`, `sorting`, `represent_idx`, `is_adult`, `is_hot`, `pub_date`, `rating`, `runtime`, `title`, `subtitle`, `keyword`, `thumbnail`, `director`, `actor`, `regdate`, `is_search`) values('11303','Y','KOR','ACT','8362','21642245','N','Y','2018-07-18','8.47','123','독전-감독판','','독전익스텐디드컷','http://image.yesfile.com/data/thema_movie/2018/07/25/1532494339_movie.jpg','이해영','조진웅','2018-07-25 13:52:19','0');
+insert into `movie` (`idx`, `status`, `cate1`, `cate2`, `sorting`, `represent_idx`, `is_adult`, `is_hot`, `pub_date`, `rating`, `runtime`, `title`, `subtitle`, `keyword`, `thumbnail`, `director`, `actor`, `regdate`, `is_search`) values('11304','Y','KOR','THR','8320','21642216','N','Y','2018-07-13','9.53','91','속닥속닥','','속닥속닥','http://image.yesfile.com/data/thema_movie/2018/07/25/1532494413_movie.jpg','최상훈','소주연','2018-07-25 13:53:38','0');
+insert into `movie` (`idx`, `status`, `cate1`, `cate2`, `sorting`, `represent_idx`, `is_adult`, `is_hot`, `pub_date`, `rating`, `runtime`, `title`, `subtitle`, `keyword`, `thumbnail`, `director`, `actor`, `regdate`, `is_search`) values('11285','Y','KOR','COM','8318','21573765','N','Y','2018-06-13','9.04','116','탐정 리턴즈','','탐정 리턴즈','http://image.yesfile.com/data/thema_movie/2018/07/18/1531874910_movie.jpg','이언희','권상우','2018-07-18 09:48:35','0');
+insert into `movie` (`idx`, `status`, `cate1`, `cate2`, `sorting`, `represent_idx`, `is_adult`, `is_hot`, `pub_date`, `rating`, `runtime`, `title`, `subtitle`, `keyword`, `thumbnail`, `director`, `actor`, `regdate`, `is_search`) values('11287','Y','KOR','DRA','8317','21581744','N','Y','2018-06-27','9.62','121','허스토리','','허스토리','http://image.yesfile.com/data/thema_movie/2018/07/19/1531964986_movie.jpg','민규동','김희애','2018-07-19 10:49:51','0');
+insert into `movie` (`idx`, `status`, `cate1`, `cate2`, `sorting`, `represent_idx`, `is_adult`, `is_hot`, `pub_date`, `rating`, `runtime`, `title`, `subtitle`, `keyword`, `thumbnail`, `director`, `actor`, `regdate`, `is_search`) values('11208','Y','KOR','ACT','8315','21526153','N','Y','2018-05-22','8.51','123','독전','Believer, 2018','독전','http://image.yesfile.com/data/thema_movie/2018/06/25/1529887170_movie.jpg','이해영','조진웅,류준열,김주혁,김성령','2018-06-25 09:39:35','0');
+insert into `movie` (`idx`, `status`, `cate1`, `cate2`, `sorting`, `represent_idx`, `is_adult`, `is_hot`, `pub_date`, `rating`, `runtime`, `title`, `subtitle`, `keyword`, `thumbnail`, `director`, `actor`, `regdate`, `is_search`) values('11173','Y','KOR','THR','8314','21184258','N','Y','2018-05-30','7.28','87','데자뷰','','데자뷰','http://image.yesfile.com/data/thema_movie/2018/06/11/1528688951_movie.jpg','고경민','이천희','2018-06-11 12:49:11','0');
+insert into `movie` (`idx`, `status`, `cate1`, `cate2`, `sorting`, `represent_idx`, `is_adult`, `is_hot`, `pub_date`, `rating`, `runtime`, `title`, `subtitle`, `keyword`, `thumbnail`, `director`, `actor`, `regdate`, `is_search`) values('11366','Y','FOR','COM','8264','21451601','N','N','2018-06-06','9.04','110','아이 필 프리티','I FEEL PRETTY','아이 필 프리티','http://image.yesfile.com/data/thema_movie/2018/08/22/1534905932_movie.jpg','에비콘 ','에이미 슈머','2018-08-22 11:45:47','0');

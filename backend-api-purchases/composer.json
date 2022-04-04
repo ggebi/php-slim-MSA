@@ -1,0 +1,20 @@
+{
+    "name": "backend-api-purchases",
+    "description": "yesfile 구매목록 API",
+    "require": {
+        "slim/slim": "^3.10",
+        "davidepastore/slim-validation": "^0.5.0",
+        "tuupola/slim-jwt-auth": "^3.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "akrabat/ip-address-middleware": "^1.0",
+        "predis/predis": "^1.1",
+        "monolog/monolog": "^1.23",
+        "geggleto/psr7-acl": "^1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bankmedia\\Models\\": "models/",
+            "Bankmedia\\Common\\": "third-party/"
+        }
+    }
+}

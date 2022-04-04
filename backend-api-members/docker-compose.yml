@@ -1,0 +1,28 @@
+version: '2'
+
+networks:
+    default:
+        external:
+            name: yesfile
+
+services:
+    api.backend-api-members:
+      image: backend-api-members:latest
+      ports:
+        - "8082:80"
+      environment:
+        - ENVIRONMENT=yesfile-develop
+        - DB_ENV_MDB_HOST=testdb.common
+        - DB_ENV_MDB_DATABASE=webhard
+        - DB_ENV_MDB_USER=webhard
+        - LOGS_ENV_SCHEME=tcp
+        - LOGS_ENV_HOST=redis.backend-api-logs
+        - LOGS_ENV_PORT=6379
+        - LOGS_ENV_TYPE=Members
+        - LOGS_ENV_REDIS_KEY=backend-api-logs
+        - LOGS_ENV_CHANNEL=members
+      volumes:
+        - $PWD/src:/var/www/src
+        - $PWD/models:/var/www/models
+        - $PWD/third-party:/var/www/third-party
+        - $PWD/../secrets:/run/secrets

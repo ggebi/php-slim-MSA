@@ -1,0 +1,21 @@
+version: '2'
+
+networks:
+  default:
+    external:
+      # name: yesfile
+      name: smp-applefile
+
+services:
+  redis.backend-api-logs:
+    image: redis
+
+  logstash.backend-api-logs:
+    image: docker.elastic.co/logstash/logstash:6.2.1
+    environment:
+      - ENVIRONMENT=yesfile-develop
+      - XPACK_MONITORING_ENABLED=false
+    volumes:
+      - ${PWD}/conf/GeoLite2-City_20170606.mmdb:/config-dir/GeoLite2-City_20170606.mmdb
+      - ${PWD}/conf/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - ${PWD}/conf/logstash.conf:/usr/share/logstash/pipeline/logstash.conf

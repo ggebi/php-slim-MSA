@@ -1,0 +1,7 @@
+deploy/
+vendor/
+.git
+.gitignore
+composer.lock
+Dockerfile
+docker-compose.yml

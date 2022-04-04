@@ -1,0 +1,30 @@
+version: "2"
+
+networks:
+  default:
+    external:
+      name: yesf
+
+services:
+  redis.backend-api-auth:
+    image: redis:4.0
+    ports:
+      - "6379:6379"
+  api.backend-api-auth:
+    image: backend-api-auth:latest
+    ports:
+      - "8081:80"
+    environment:
+      - ENVIRONMENT=yesf-develop
+      - REDIS_ENV_SCHEME=tcp
+      - REDIS_ENV_HOST=redis.backend-api-auth
+      - LOGS_ENV_SCHEME=tcp
+      - LOGS_ENV_HOST=redis.backend-api-logs
+      - LOGS_ENV_TYPE=Auth
+      - LOGS_ENV_REDIS_KEY=backend-api-logs
+      - LOGS_ENV_CHANNEL=auth
+    volumes:
+      - $PWD/src:/var/www/src
+      - $PWD/models:/var/www/models
+      - $PWD/third-party:/var/www/third-party
+      - $PWD/../secrets:/run/secrets

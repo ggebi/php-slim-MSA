@@ -1,0 +1,22 @@
+{
+  "name": "backend-api-auth",
+  "description": "yesf 인증 API",
+  "require": {
+    "slim/slim": "^3.11",
+    "davidepastore/slim-validation": "^0.5.0",
+    "tuupola/slim-jwt-auth": "^3.1",
+    "guzzlehttp/guzzle": "^6.3",
+    "akrabat/ip-address-middleware": "^1.0",
+    "predis/predis": "^1.1",
+    "monolog/monolog": "^1.23"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bankmedia\\Models\\": "models/",
+      "Bankmedia\\Common\\": "third-party/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7"
+  }
+}
